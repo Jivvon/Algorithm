@@ -6,10 +6,10 @@ class Solution:
         for j in range(len(s)):
             if s[j-l: j+1] == s[j-l: j+1][::-1]:
                 i, l = j-l, l+1
-                # print(s[i: i+l])
+                print(s[i: i+l], i, l, "in 1")
             elif j-l > 0 and s[j-l-1: j+1] == s[j-l-1: j+1][::-1]:
                 i, l = j-l-1, l+2
-                # print(s[i: i+l])
+                print(s[i: i+l], i, l, "in 2")
         return s[i: i+l]
 
 
