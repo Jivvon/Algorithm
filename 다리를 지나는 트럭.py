@@ -1,7 +1,7 @@
 import collections
 from typing import List
 
-from timer import timer
+from utils.timer import timer
 
 DUMMY_TRUCK = 0
 

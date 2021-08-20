@@ -1,6 +1,6 @@
 from typing import List
 
-from timer import timer
+from utils.timer import timer
 
 
 @timer

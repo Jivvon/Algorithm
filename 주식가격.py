@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import List
 
-from timer import timer
+from utils.timer import timer
 
 
 # 더 좋은 풀이
