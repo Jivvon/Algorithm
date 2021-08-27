@@ -16,7 +16,7 @@ def union_parent(parent: List[int], a, b):
 
 
 if __name__ == '__main__':
-		v, e = 7, 9  # vertical, edge
+		v, e = 7, 9  # vertex, edge
 		parent = [i for i in range(v + 1)]  # 부모를 자기 자신으로 초기화
 		arr = [
 				[1, 2, 29],

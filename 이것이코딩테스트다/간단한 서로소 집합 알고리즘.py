@@ -31,7 +31,7 @@ def union_parent(parent, a, b):
 
 
 if __name__ == '__main__':
-		v, e = 6, 4,  # vertical, edge
+		v, e = 6, 4,  # vertex, edge
 		arr = [
 				[1, 4],
 				[2, 3],
