@@ -1,4 +1,6 @@
-### 다시 풀어보기
+## 다시 풀어보기
+
+## DFS/BFS
 
 - [가장 먼 노드](https://programmers.co.kr/learn/courses/30/lessons/49189)
 - [순위](https://programmers.co.kr/learn/courses/30/lessons/49191)
