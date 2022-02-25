@@ -23,78 +23,78 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
 # class 사용
 @timer
 def solution(genres, plays):
-		answer = []
-		dic = {}
-		album_list = []
-		for i in range(len(genres)):
-				dic[genres[i]] = dic.get(genres[i], 0) + plays[i]
-				album_list.append(Album(genres[i], plays[i], i))
+	answer = []
+	dic = {}
+	album_list = []
+	for i in range(len(genres)):
+		dic[genres[i]] = dic.get(genres[i], 0) + plays[i]
+		album_list.append(Album(genres[i], plays[i], i))
 
-		dic = sorted(dic.items(), key=lambda x: x[1], reverse=True)
-		album_list = sorted(album_list, reverse=True)
+	dic = sorted(dic.items(), key=lambda x: x[1], reverse=True)
+	album_list = sorted(album_list, reverse=True)
 
-		while len(dic) > 0:
-				play_genre = dic.pop(0)
-				print(play_genre)
-				cnt = 0;
-				for ab in album_list:
-						if play_genre[0] == ab.genre:
-								answer.append(ab.track)
-								cnt += 1
-						if cnt == 2:
-								break
+	while len(dic) > 0:
+		play_genre = dic.pop(0)
+		print(play_genre)
+		cnt = 0;
+		for ab in album_list:
+			if play_genre[0] == ab.genre:
+				answer.append(ab.track)
+				cnt += 1
+			if cnt == 2:
+				break
 
-		return answer
+	return answer
 
 
 class Album:
-		def __init__(self, genre, play, index):
-				self.genre = genre
-				self.play = play
-				self.track = index
+	def __init__(self, genre, play, index):
+		self.genre = genre
+		self.play = play
+		self.track = index
 
-		def __lt__(self, other):
-				return self.play < other.play
+	def __lt__(self, other):
+		return self.play < other.play
 
-		def __gt__(self, other):
-				return self.play > other.play
+	def __gt__(self, other):
+		return self.play > other.play
 
-		def __le__(self, other):
-				return self.play <= other.play
+	def __le__(self, other):
+		return self.play <= other.play
 
-		def __ge__(self, other):
-				return self.play >= other.play
+	def __ge__(self, other):
+		return self.play >= other.play
 
-		def __eq__(self, other):
-				return self.play == other.play
+	def __eq__(self, other):
+		return self.play == other.play
 
-		def __ne__(self, other):
-				return self.play != other.play
+	def __ne__(self, other):
+		return self.play != other.play
 
 
 # 내 풀이
 @timer
 def _solution(genres: List[str], plays: List[int]) -> List[int]:
-		"""
-		1. 재생수에 인덱스 같이 해서 정렬
-		2. tables에 장르별 총합만 가지고 있고 index에는 순서대로 인덱스만 저장
-		"""
-		from collections import defaultdict
+	"""
+    1. 재생수에 인덱스 같이 해서 정렬
+    2. tables에 장르별 총합만 가지고 있고 index에는 순서대로 인덱스만 저장
+    """
+	from collections import defaultdict
 
-		index_of_genre = defaultdict(list)
-		sum_of_genre = defaultdict(int)
+	index_of_genre = defaultdict(list)  # {genre: [idx sorted by plays]}
+	sum_of_genre = defaultdict(int)  # {genre: sum of plays}
 
-		for idx, val in sorted(enumerate(plays), key=lambda x: x[1], reverse=True):
-				index_of_genre[genres[idx]].append(idx)
-				sum_of_genre[genres[idx]] += val
+	for idx, val in sorted(enumerate(plays), key=lambda x: x[1], reverse=True):
+		index_of_genre[genres[idx]].append(idx)
+		sum_of_genre[genres[idx]] += val
 
-		answer = []
-		for key, value in sorted(sum_of_genre.items(), key=lambda x: x[1], reverse=True):
-				answer.extend(index_of_genre[key][:2])
+	answer = []
+	for key, _ in sorted(sum_of_genre.items(), key=lambda x: x[1], reverse=True):
+		answer.extend(index_of_genre[key][:2])
 
-		return answer
+	return answer
 
 
 if __name__ == '__main__':
-		solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500])  # [4, 1, 3, 0]
-		solution(["classic", "pop", "classic2", "pop2"], [500, 600, 150, 800])  # [3, 1, 0, 2]
+	_solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500])  # [4, 1, 3, 0]
+	_solution(["classic", "pop", "classic2", "pop2"], [500, 600, 150, 800])  # [3, 1, 0, 2]
