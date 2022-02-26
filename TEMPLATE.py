@@ -5,8 +5,8 @@ from utils.timer import timer
 
 @timer
 def solution(param: List[int], param2: str):
-		pass
+    pass
 
 
 if __name__ == '__main__':
-		solution()
+    solution()
