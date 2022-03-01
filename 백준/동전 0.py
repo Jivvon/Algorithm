@@ -1,12 +1,16 @@
-from typing import List
+import sys
 
-from utils.timer import timer
+n, k = map(int, sys.stdin.readline().split())
+coins = []
 
+for _ in range(n):
+    coins.append(int(sys.stdin.readline()))
 
-@timer
-def solution(param: List[int], param2: str):
-    pass
+used_coins = 0
+while k:
+    a, b = divmod(k, coins.pop())
+    if a > 0:
+        used_coins += a
+        k = b
 
-
-if __name__ == '__main__':
-    solution()
+print(used_coins)
